@@ -11,7 +11,7 @@ import { PlayerDescription } from '../../../components/product/player-descriptio
 
 
 const getPlayer = async ( handle: string, players: Player[]) => {
-  console.log('handle', handle, LeicesterPlayers)
+  // console.log('handle', handle, LeicesterPlayers)
 
   return LeicesterPlayers.find((player) => player.slug === handle);
 

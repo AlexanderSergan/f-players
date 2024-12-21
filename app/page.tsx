@@ -2,7 +2,7 @@ import { Carousel } from 'components/carousel';
 import { ThreePlayerGrid } from 'components/grid/three-players';
 
 export const metadata = {
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description: 'Find socials of your favourite players.',
   openGraph: {
     type: 'website'
   }

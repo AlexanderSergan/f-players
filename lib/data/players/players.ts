@@ -1,8 +1,19 @@
-export const LeicesterPlayers = [
+export type Player = {
+    name: string,
+    position: string,
+    img?: string,
+    social_media: {
+        instagram: string | null,
+        twitter: string | null,
+        tiktok: string | null
+    }
+}
+
+export const LeicesterPlayers: Player[] = [
     {
         "name": "Mads Hermansen",
         "position": "Goalkeeper",
-        "img": "mads-hermansen.webp",
+        "img": "/mads-hermansen.webp",
         "social_media": {
             "instagram": "@madshermansen",
             "twitter": null,
@@ -11,7 +22,7 @@ export const LeicesterPlayers = [
     },
     {
         "name": "Jakub Stolarczyk",
-        "img": "jakub-stolarczyk.jpg",
+        "img": "/jakub-stolarczyk-2.webp",
         "position": "Goalkeeper",
         "social_media": {
             "instagram": "@jakub.stolarczyk",
@@ -22,7 +33,7 @@ export const LeicesterPlayers = [
     {
         "name": "Kieran Trippier",
         "position": "Defender (Right Back)",
-        "img": "kieran-trippier.webp",
+        "img": "/kieran-trippier.webp",
         "social_media": {
             "instagram": "@ktrippier2",
             "twitter": "@trippier2",

@@ -1,11 +1,11 @@
-import { Product } from 'lib/shopify/types';
+import { Player } from 'lib/data/players/players';
 import Link from 'next/link';
 import { GridTileImage } from './grid/tile';
 
 export async function Carousel() {
   // Collections that start with `hidden-*` are hidden from the search page.
   // const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
-  const products: Product[] = [];
+  const products: Player[] = [];
 
   if (!products?.length) return null;
 
@@ -17,18 +17,18 @@ export async function Carousel() {
       <ul className="flex animate-carousel gap-4">
         {carouselProducts.map((product, i) => (
           <li
-            key={`${product.handle}${i}`}
+            key={`${product.position}${i}`}
             className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
           >
-            <Link href={`/product/${product.handle}`} className="relative h-full w-full">
+            <Link href={`/product/${product.position}`} className="relative h-full w-full">
               <GridTileImage
-                alt={product.title}
+                alt={product.position}
                 label={{
-                  title: product.title,
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode
+                  title: product.position,
+                  // amount: product.priceRange.maxVariantPrice.amount,
+                  // currencyCode: product.priceRange.maxVariantPrice.currencyCode
                 }}
-                src={product.featuredImage?.url}
+                src={product.img as string}
                 fill
                 sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
               />

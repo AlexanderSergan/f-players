@@ -17,7 +17,7 @@ function ThreePlayerGridItem({
     >
       <Link
         className="relative block aspect-square h-full w-full"
-        href={`/product/${item.position}`}
+        href={`/player/${item.slug}`}
         prefetch={true}
       >
         <GridTileImage

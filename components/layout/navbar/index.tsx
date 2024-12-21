@@ -25,7 +25,8 @@ export async function Navbar() {
           >
             <LogoSquare />
             <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
+              {/* {SITE_NAME} */}
+              F-Players
             </div>
           </Link>
           {/* {menu.length ? (

@@ -43,6 +43,7 @@ export const LeicesterPlayers: Player[] = [
     {
         "name": "Victor Lindelof",
         "position": "Defender (Center Back)",
+        img: "/victor-lindelof-2.png",
         "social_media": {
             "instagram": "@victorlindelof",
             "twitter": "@v_lindelof",
@@ -52,6 +53,7 @@ export const LeicesterPlayers: Player[] = [
     {
         "name": "Harry Maguire",
         "position": "Defender (Center Back)",
+        "img": "/harry-maguire.png",
         "social_media": {
             "instagram": "@harrymaguire93",
             "twitter": "@HarryMaguire93",
@@ -61,6 +63,7 @@ export const LeicesterPlayers: Player[] = [
     {
         "name": "Victor Kristiansen",
         "position": "Defender (Left Back)",
+        img: '/victor-kristiansen.webp',
         "social_media": {
             "instagram": "@victorkristiansen",
             "twitter": "@v_kristiansen23",
@@ -70,6 +73,7 @@ export const LeicesterPlayers: Player[] = [
     {
         "name": "Conor Coady",
         "position": "Defender (Center Back)",
+        img: '/conor-coady.png',
         "social_media": {
             "instagram": "@conorcoady",
             "twitter": "@ConorCoady",
@@ -79,6 +83,8 @@ export const LeicesterPlayers: Player[] = [
     {
         "name": "Caleb Okoli",
         "position": "Defender (Center Back)",
+        "img": "/caleb-okoli.webp",
+
         "social_media": {
             "instagram": "@calebokoli",
             "twitter": null,
@@ -88,6 +94,7 @@ export const LeicesterPlayers: Player[] = [
     {
         "name": "Harry Winks",
         "position": "Midfielder (Central Midfielder)",
+        img: '/harry-winks-4.png',
         "social_media": {
             "instagram": "@harrywinks",
             "twitter": "@HarryWinks",

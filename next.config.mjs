@@ -1,4 +1,9 @@
-export default {
+
+import { withPayload } from '@payloadcms/next/withPayload';
+
+
+
+const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -10,3 +15,5 @@ export default {
     ]
   }
 };
+
+export default withPayload(withPayload(nextConfig));

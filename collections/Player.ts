@@ -6,6 +6,9 @@ export const Players: CollectionConfig = {
     read: () => true,
 
   },
+  admin: {
+    useAsTitle: 'name',
+  },
   // upload: true,
   labels: {
     singular: 'Player',

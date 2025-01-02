@@ -17,7 +17,7 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 
-console.log('🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️\n\n\n\n\DATABASE_URI', process.env.DATABASE_URI)
+// console.log('🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️\n\n\n\n\DATABASE_URI', process.env.DATABASE_URI)
 
 export default buildConfig({
   admin: {

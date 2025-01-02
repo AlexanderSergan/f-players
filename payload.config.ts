@@ -1,5 +1,6 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
@@ -7,11 +8,16 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { Club } from './collections/Club'
 import { Media } from './collections/Media'
+import { Players } from './collections/Player'
 import { Users } from './collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+
+console.log('🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️\n\n\n\n\DATABASE_URI', process.env.DATABASE_URI)
 
 export default buildConfig({
   admin: {
@@ -20,7 +26,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Players, Club],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -32,32 +38,14 @@ export default buildConfig({
     },
   }),
   sharp,
+    email: resendAdapter({
+    defaultFromAddress: 'info@200kph.dev',
+    defaultFromName: 'Football Players',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
   plugins: [
     payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],
 })
 
-
-// import sharp from 'sharp'
-// import { lexicalEditor } from '@payloadcms/richtext-lexical'
-// import { mongooseAdapter } from '@payloadcms/db-mongodb'
-// import { buildConfig } from 'payload'
-// export default buildConfig({
-//   // If you'd like to use Rich Text, pass your editor here
-//   editor: lexicalEditor(),
-//   // Define and configure your collections in this array
-//   collections: [],
-//   // Your Payload secret - should be a complex and secure string, unguessable
-//   secret: process.env.PAYLOAD_SECRET || '',
-//   // Whichever Database Adapter you're using should go here
-//   // Mongoose is shown as an example, but you can also use Postgres
-//   db: mongooseAdapter({
-//     url: process.env.DATABASE_URI || '',
-//   }),
-//   // If you want to resize images, crop, set focal point, etc.
-//   // make sure to install it and pass it to the config.
-//   // This is optional - if you don't need to do these things,
-//   // you don't need it!
-//   sharp,
-// })

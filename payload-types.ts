@@ -13,6 +13,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    players: Player;
+    club: Club;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -21,6 +23,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    players: PlayersSelect<false> | PlayersSelect<true>;
+    club: ClubSelect<false> | ClubSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -95,6 +99,69 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "players".
+ */
+export interface Player {
+  id: number;
+  name: string;
+  position: string;
+  img: number | Media;
+  slug: string;
+  club: string;
+  country: string;
+  social_media?: {
+    instagram?: string | null;
+    twitter?: string | null;
+    tiktok?: string | null;
+  };
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "club".
+ */
+export interface Club {
+  id: number;
+  name: string;
+  crest: number | Media;
+  slug: string;
+  country: string;
+  players?: (number | Player)[] | null;
+  social_media?: {
+    instagram?: string | null;
+    twitter?: string | null;
+    tiktok?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -107,6 +174,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'players';
+        value: number | Player;
+      } | null)
+    | ({
+        relationTo: 'club';
+        value: number | Club;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -171,6 +246,71 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "players_select".
+ */
+export interface PlayersSelect<T extends boolean = true> {
+  name?: T;
+  position?: T;
+  img?: T;
+  slug?: T;
+  club?: T;
+  country?: T;
+  social_media?:
+    | T
+    | {
+        instagram?: T;
+        twitter?: T;
+        tiktok?: T;
+      };
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "club_select".
+ */
+export interface ClubSelect<T extends boolean = true> {
+  name?: T;
+  crest?: T;
+  slug?: T;
+  country?: T;
+  players?: T;
+  social_media?:
+    | T
+    | {
+        instagram?: T;
+        twitter?: T;
+        tiktok?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   url?: T;

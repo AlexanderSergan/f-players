@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import Footer from 'components/layout/footer';
+import Footer from '@/components/layout/footer';
 import { Gallery } from 'components/product/gallery';
+import { PlayerDescription } from 'components/product/player-description';
 import { ProductProvider } from 'components/product/product-context';
 import { LeicesterPlayers, Player } from 'lib/data/players/players';
 import { Suspense } from 'react';
-import { PlayerDescription } from '../../../components/product/player-description';
 
 
 

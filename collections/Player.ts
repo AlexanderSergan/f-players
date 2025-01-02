@@ -6,7 +6,7 @@ export const Players: CollectionConfig = {
     read: () => true,
 
   },
-  upload: true,
+  // upload: true,
   labels: {
     singular: 'Player',
     plural: 'Players',
@@ -42,7 +42,8 @@ export const Players: CollectionConfig = {
     },
     {
       name: 'club',
-      type: 'text',
+      type: 'relationship',
+      relationTo: 'club',
       required: true,
     },
     {

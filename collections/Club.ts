@@ -7,7 +7,7 @@ export const Club: CollectionConfig = {
         read: () => true,
     
     },
-    upload: true,
+    // upload: true,
     labels: {
         singular: 'Club',
         plural: 'Clubs',

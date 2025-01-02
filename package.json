@@ -3,11 +3,14 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
+    "postinstall": "yarn run cms:migrate:create && yarn run cms:migrate",
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "cms:types:generate": "payload generate:types",
+    "cms:migrate:create": "payload migrate:create",
+    "cms:migrate": "payload migrate",
     "test": "pnpm prettier:check"
   },
   "dependencies": {

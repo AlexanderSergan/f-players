@@ -139,7 +139,7 @@ export interface Player {
 export interface Club {
   id: number;
   name: string;
-  crest: number | Media;
+  crest?: (number | null) | Media;
   slug: string;
   country: string;
   players?: (number | Player)[] | null;

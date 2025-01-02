@@ -104,7 +104,7 @@ export interface Media {
 export interface Player {
   id: number;
   name: string;
-  position: string;
+  position: 'goalkeeper' | 'defender' | 'midfielder' | 'forward';
   img: number | Media;
   slug: string;
   club: string;

@@ -17,7 +17,11 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 
-// console.log('🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️\n\n\n\n\DATABASE_URI', process.env.DATABASE_URI)
+// console.log('🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️
+// 
+// 
+// 
+// \DATABASE_URI', process.env.DATABASE_URI)
 
 export default buildConfig({
   admin: {
@@ -49,3 +53,33 @@ export default buildConfig({
   ],
 })
 
+
+// const err =  {"cause":"Error: getaddrinfo ENOTFOUND f-players","status":500,"message":"fetch failed","query":"
+//     query getPage($handle: String!) {
+//       pageByHandle(handle: $handle) {
+//         ...page
+//       }
+//     }
+    
+//     fragment page on Page {
+//       ... on Page {
+//         id
+//         title
+//         handle
+//         body
+//         bodySummary
+//         seo {
+//           ...seo
+//         }
+//         createdAt
+//         updatedAt
+//       }
+//     }
+    
+//     fragment seo on SEO {
+//       description
+//       title
+//     }
+  
+  
+//   "}

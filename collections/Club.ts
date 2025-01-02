@@ -22,7 +22,7 @@ export const Club: CollectionConfig = {
         name: 'crest',
         type: 'upload',
         relationTo: 'media',
-        required: true,
+        // required: true,
         },
         {
         name: 'slug',

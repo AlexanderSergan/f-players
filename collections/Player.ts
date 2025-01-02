@@ -19,7 +19,13 @@ export const Players: CollectionConfig = {
     },
     {
       name: 'position',
-      type: 'text',
+      type: 'select',
+      options: [
+        { label: 'Goalkeeper', value: 'goalkeeper' },
+        { label: 'Defender', value: 'defender' },
+        { label: 'Midfielder', value: 'midfielder' },
+        { label: 'Forward', value: 'forward' },
+      ],
       required: true,
     },
     {

@@ -96,19 +96,6 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
 
   if (!player) return notFound();
 
-  const galleryEntries = [
-    {
-      src: player.img as string,
-      altText: player.name as string
-    },{
-      src: player.img as string,
-      altText: player.name as string
-    },{
-      src: player.img as string,
-      altText: player.name as string
-    },
-  ]
-
   return (
     <ProductProvider>
       {/* <script
@@ -131,7 +118,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
                   altText: image.altText
                 }))}
               /> */}
-              <Gallery images={galleryEntries} />
+              <Gallery images={[{src: player.img as string, altText: player.name as string}]} />
             </Suspense>
           </div>
 

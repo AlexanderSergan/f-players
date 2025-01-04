@@ -35,13 +35,14 @@ type PayloadGetResponse<T> = {
 type PlayerWithId = Player & { id: string }
 
 export async function generateStaticParams() {
-  const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
+  const res: PayloadGetResponse<PlayerWithId> = await fetch ('http://localhost:3000' + '/api/players?limit=999').then(res => res.json())
+  // const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
 
-  return res.docs.map((player) => ({
+  const result =  res.docs.map((player) => ({
     id: String(player.id),
     // params: { handle: player.slug }
   }))
-
+  return result || []
 
 }
 
@@ -67,8 +68,6 @@ export async function generateMetadata(props: {
 
   if (!player) return notFound();
 
-  // const { url, width, height, altText: alt } = player.img || {};
-  // const indexable = !player.tags.includes(HIDDEN_PRODUCT_TAG);
 
   return {
     title: player.name ,
@@ -113,7 +112,8 @@ export default async function PlayerPage( { params }: { params: Promise<{ id: st
   // const player = await getPlayer(params.handle, players);
 
   const id = (await params).id
-  const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
+  const player: Player = await fetch ('http://localhost:3000' + '/api/players/' + id).then(res => res.json())
+  // const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
 
 
 

@@ -18,8 +18,8 @@ importers:
         specifier: ^3.11.0
         version: 3.11.0(@neondatabase/serverless@0.9.5)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(react@19.0.0)
       '@payloadcms/db-vercel-postgres':
-        specifier: ^3.13.0
-        version: 3.13.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(react@19.0.0)
+        specifier: ^3.11.0
+        version: 3.11.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(react@19.0.0)
       '@payloadcms/email-resend':
         specifier: ^3.11.0
         version: 3.11.0(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))
@@ -33,8 +33,8 @@ importers:
         specifier: ^3.11.0
         version: 3.11.0(biazvgrlqv7rm4z73fnypclezq)
       '@payloadcms/storage-uploadthing':
-        specifier: ^3.13.0
-        version: 3.13.0(next@15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(tailwindcss@3.4.16)
+        specifier: ^3.11.0
+        version: 3.11.0(@aws-sdk/client-s3@3.717.0)(@aws-sdk/lib-storage@3.717.0(@aws-sdk/client-s3@3.717.0))(next@15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(tailwindcss@3.4.16)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1178,20 +1178,15 @@ packages:
     peerDependencies:
       payload: 3.11.0
 
-  '@payloadcms/db-vercel-postgres@3.13.0':
-    resolution: {integrity: sha512-E71apJAONykGjXSSIl7gUj3CRAPIhfguS9OvAq/S7kVbNeb9XC2b5Ueru1y1qwrdpXe0Xxiivr5ULzq1PpKnJA==}
+  '@payloadcms/db-vercel-postgres@3.11.0':
+    resolution: {integrity: sha512-/4psjtJnkV+Q5fLu8wMs+qHdNZM7f2qbydwsv9lVjCeowGGMSa0yV1UmKvMBD9vPvIDuNMsUHQzDNPOSy6y5Cg==}
     peerDependencies:
-      payload: 3.13.0
+      payload: 3.11.0
 
   '@payloadcms/drizzle@3.11.0':
     resolution: {integrity: sha512-FhKqhvQAebKRNTJPpu9MPNUlGCnRvBqvSPCVth9iud/P3Fday7zKEmEgFirjLdTM7Ggrz86J3xrrfGgoUFBAgA==}
     peerDependencies:
       payload: 3.11.0
-
-  '@payloadcms/drizzle@3.13.0':
-    resolution: {integrity: sha512-L1QTRqf2f7MIT4r/icN7FuQts7tXx+BzUvtWA54aymB/6Y1WCzIFB7hShZd0lzxszFkSaaANk/2t3ziY8UKJOA==}
-    peerDependencies:
-      payload: 3.13.0
 
   '@payloadcms/email-nodemailer@3.11.0':
     resolution: {integrity: sha512-g62Dcu/zlcKjH3Y9SrOsV0e7OTCUt7OJt2wq8iukSmAmEqVmkbZFHvzmh9BntGcTAjaBKguJosW8ep7lQW7zcA==}
@@ -1225,10 +1220,29 @@ packages:
     peerDependencies:
       payload: 3.11.0
 
-  '@payloadcms/plugin-cloud-storage@3.13.0':
-    resolution: {integrity: sha512-5xN4d4UpBdnCn7+KPGn3eUSPDPlxJEu06aVQof31Kp2+cxTRc2KJfz5E8UuJhlWes5ywOXrp93p8iD4B3mjlyw==}
+  '@payloadcms/plugin-cloud-storage@3.11.0':
+    resolution: {integrity: sha512-WAqUwne4p8gdID6ucQdOw4rAw4FvV2/WcleOm34XoMUIVwyb1CuUVTFjAO6GNj9/GyGY5+2/GIH6fjVXxe2IJQ==}
     peerDependencies:
-      payload: 3.13.0
+      '@aws-sdk/client-s3': ^3.614.0
+      '@aws-sdk/lib-storage': ^3.614.0
+      '@azure/abort-controller': ^1.0.0
+      '@azure/storage-blob': ^12.11.0
+      '@google-cloud/storage': ^7.7.0
+      '@vercel/blob': ^0.22.3
+      payload: 3.11.0
+    peerDependenciesMeta:
+      '@aws-sdk/client-s3':
+        optional: true
+      '@aws-sdk/lib-storage':
+        optional: true
+      '@azure/abort-controller':
+        optional: true
+      '@azure/storage-blob':
+        optional: true
+      '@google-cloud/storage':
+        optional: true
+      '@vercel/blob':
+        optional: true
 
   '@payloadcms/richtext-lexical@3.11.0':
     resolution: {integrity: sha512-ONR+sSRayllhTEk1N9b1jXzmKUzUKU73/KmtQNu90+mmvs6rdqNbDcjerlE/uVprkvDO/gRpI+jVFNlFD/cuBw==}
@@ -1252,11 +1266,11 @@ packages:
       react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
       react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
 
-  '@payloadcms/storage-uploadthing@3.13.0':
-    resolution: {integrity: sha512-6Ep9R6haPNTmW2pJE/r/Xi1x/RXn3+rr0G5yg6E02yI76V5aQTPU1Dhdmofj62mRI3O6yycvlYeqt425Ch0GWg==}
+  '@payloadcms/storage-uploadthing@3.11.0':
+    resolution: {integrity: sha512-0adsq+mjTP25+i/MiYAC+Dgz6WbCFgN/QxofaqNqaddXMp/Dk3O53oip5Ah/UYXerRyCv3QQDIdYZouaqQRzuQ==}
     engines: {node: ^18.20.2 || >=20.9.0}
     peerDependencies:
-      payload: 3.13.0
+      payload: 3.11.0
 
   '@payloadcms/translations@3.11.0':
     resolution: {integrity: sha512-6iGYqe3lE5ARBcMDbXOcPB0mMK2oxyn46fI2c06u2VEGS6z4b8B4cDoNfHv6ZhInzTS94ZtZUnbK1heR8KcEcg==}
@@ -4919,9 +4933,9 @@ snapshots:
       - sqlite3
       - supports-color
 
-  '@payloadcms/db-vercel-postgres@3.13.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(react@19.0.0)':
+  '@payloadcms/db-vercel-postgres@3.11.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(react@19.0.0)':
     dependencies:
-      '@payloadcms/drizzle': 3.13.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(pg@8.11.3)(react@19.0.0)
+      '@payloadcms/drizzle': 3.11.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(pg@8.11.3)(react@19.0.0)
       '@vercel/postgres': 0.9.0
       console-table-printer: 2.12.1
       drizzle-kit: 0.28.0
@@ -4963,45 +4977,6 @@ snapshots:
       - supports-color
 
   '@payloadcms/drizzle@3.11.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(pg@8.11.3)(react@19.0.0)':
-    dependencies:
-      console-table-printer: 2.12.1
-      drizzle-orm: 0.36.1(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(pg@8.11.3)(react@19.0.0)
-      payload: 3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5)
-      prompts: 2.4.2
-      to-snake-case: 1.0.0
-      uuid: 9.0.0
-    transitivePeerDependencies:
-      - '@aws-sdk/client-rds-data'
-      - '@cloudflare/workers-types'
-      - '@electric-sql/pglite'
-      - '@libsql/client'
-      - '@libsql/client-wasm'
-      - '@neondatabase/serverless'
-      - '@op-engineering/op-sqlite'
-      - '@opentelemetry/api'
-      - '@planetscale/database'
-      - '@prisma/client'
-      - '@tidbcloud/serverless'
-      - '@types/better-sqlite3'
-      - '@types/pg'
-      - '@types/react'
-      - '@types/sql.js'
-      - '@vercel/postgres'
-      - '@xata.io/client'
-      - better-sqlite3
-      - bun-types
-      - expo-sqlite
-      - knex
-      - kysely
-      - mysql2
-      - pg
-      - postgres
-      - prisma
-      - react
-      - sql.js
-      - sqlite3
-
-  '@payloadcms/drizzle@3.13.0(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(pg@8.11.3)(react@19.0.0)':
     dependencies:
       console-table-printer: 2.12.1
       drizzle-orm: 0.36.1(@neondatabase/serverless@0.9.5)(@types/pg@8.10.2)(@types/react@19.0.0)(@vercel/postgres@0.9.0)(pg@8.11.3)(react@19.0.0)
@@ -5105,11 +5080,14 @@ snapshots:
       - debug
       - encoding
 
-  '@payloadcms/plugin-cloud-storage@3.13.0(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))':
+  '@payloadcms/plugin-cloud-storage@3.11.0(@aws-sdk/client-s3@3.717.0)(@aws-sdk/lib-storage@3.717.0(@aws-sdk/client-s3@3.717.0))(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))':
     dependencies:
       find-node-modules: 2.1.3
       payload: 3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5)
       range-parser: 1.2.1
+    optionalDependencies:
+      '@aws-sdk/client-s3': 3.717.0
+      '@aws-sdk/lib-storage': 3.717.0(@aws-sdk/client-s3@3.717.0)
 
   '@payloadcms/richtext-lexical@3.11.0(biazvgrlqv7rm4z73fnypclezq)':
     dependencies:
@@ -5150,12 +5128,18 @@ snapshots:
       - supports-color
       - typescript
 
-  '@payloadcms/storage-uploadthing@3.13.0(next@15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(tailwindcss@3.4.16)':
+  '@payloadcms/storage-uploadthing@3.11.0(@aws-sdk/client-s3@3.717.0)(@aws-sdk/lib-storage@3.717.0(@aws-sdk/client-s3@3.717.0))(next@15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))(tailwindcss@3.4.16)':
     dependencies:
-      '@payloadcms/plugin-cloud-storage': 3.13.0(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))
+      '@payloadcms/plugin-cloud-storage': 3.11.0(@aws-sdk/client-s3@3.717.0)(@aws-sdk/lib-storage@3.717.0(@aws-sdk/client-s3@3.717.0))(payload@3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5))
       payload: 3.11.0(bufferutil@4.0.9)(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(utf-8-validate@6.0.5)
       uploadthing: 7.3.0(next@15.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(tailwindcss@3.4.16)
     transitivePeerDependencies:
+      - '@aws-sdk/client-s3'
+      - '@aws-sdk/lib-storage'
+      - '@azure/abort-controller'
+      - '@azure/storage-blob'
+      - '@google-cloud/storage'
+      - '@vercel/blob'
       - express
       - fastify
       - h3

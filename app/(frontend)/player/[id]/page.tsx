@@ -35,7 +35,7 @@ type PayloadGetResponse<T> = {
 type PlayerWithId = Player & { id: string }
 
 export async function generateStaticParams() {
-  const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.vercel.app' + '/api/players?limit=999').then(res => res.json())
+  const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
 
   return res.docs.map((player) => ({
     id: String(player.id),
@@ -113,7 +113,7 @@ export default async function PlayerPage( { params }: { params: Promise<{ id: st
   // const player = await getPlayer(params.handle, players);
 
   const id = (await params).id
-  const player: Player = await fetch ('https://f-players.vercel.app' + '/api/players/' + id).then(res => res.json())
+  const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
 
 
 

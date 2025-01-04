@@ -10,6 +10,42 @@ import { Suspense } from 'react';
 
 
 
+
+export const revalidate = 86400 // 60 * 60 * 24 = 1 day
+
+// We'll prerender only the params from `generateStaticParams` at build time.
+// If a request comes in for a path that hasn't been generated,
+// Next.js will server-render the page on-demand.
+export const dynamicParams = true // or false, to 404 on unknown paths
+ 
+
+type PayloadGetResponse<T> = {
+  docs: T[];
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  limit: number;
+  nextPage: number | null;
+  page: number;
+  pagingCounter: number;
+  prevPage: number | null;
+  totalDocs: number;
+  totalPages: number;
+}
+
+type PlayerWithId = Player & { id: string }
+
+export async function generateStaticParams() {
+  const res: PayloadGetResponse<PlayerWithId> = await fetch (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000' + '/api/players?limit=999').then(res => res.json())
+
+  return res.docs.map((player) => ({
+    id: String(player.id),
+    // params: { handle: player.slug }
+  }))
+
+
+}
+
+
 const getPlayer = async ( handle: string, players: Player[]) => {
   // console.log('handle', handle, LeicesterPlayers)
 
@@ -70,11 +106,16 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function ProductPage(props: { params: Promise<{ handle: string }> }) {
-  const params = await props.params;
+export default async function PlayerPage( { params }: { params: Promise<{ id: string }> }) {
+  // const params = await props.params;
   // const product = await getProduct(params.handle);
-  const players = LeicesterPlayers
-  const player = await getPlayer(params.handle, players);
+  // const players = LeicesterPlayers
+  // const player = await getPlayer(params.handle, players);
+
+  const id = (await params).id
+  const player: Player = await fetch (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000' + '/api/players/' + id).then(res => res.json())
+
+  
 
 
   // const productJsonLd = {

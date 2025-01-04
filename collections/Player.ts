@@ -43,12 +43,12 @@ export const Players: CollectionConfig = {
       required: true,
       unique: true,
     },
-    {
-      name: 'club',
-      type: 'relationship',
-      relationTo: 'club',
-      required: true,
-    },
+    // {
+    //   name: 'club',
+    //   type: 'relationship',
+    //   relationTo: 'club',
+    //   required: true,
+    // },
     {
       name: 'country',
       type: 'text',

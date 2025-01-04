@@ -108,7 +108,6 @@ export interface Player {
   position: 'goalkeeper' | 'defender' | 'midfielder' | 'forward';
   img: number | Media;
   slug: string;
-  club: number | Club;
   country: string;
   social_media?: {
     instagram?: string | null;
@@ -251,7 +250,6 @@ export interface PlayersSelect<T extends boolean = true> {
   position?: T;
   img?: T;
   slug?: T;
-  club?: T;
   country?: T;
   social_media?:
     | T

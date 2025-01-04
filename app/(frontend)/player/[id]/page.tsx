@@ -11,12 +11,12 @@ import { Suspense } from 'react';
 
 
 
-// export const revalidate = 86400 // 60 * 60 * 24 = 1 day
+export const revalidate = 86400 // 60 * 60 * 24 = 1 day
 
 // We'll prerender only the params from `generateStaticParams` at build time.
 // If a request comes in for a path that hasn't been generated,
 // Next.js will server-render the page on-demand.
-// export const dynamicParams = true // or false, to 404 on unknown paths
+export const dynamicParams = true // or false, to 404 on unknown paths
  
 
 type PayloadGetResponse<T> = {
@@ -34,25 +34,25 @@ type PayloadGetResponse<T> = {
 
 type PlayerWithId = Player & { id: string }
 
-// export async function generateStaticParams() {
+export async function generateStaticParams() {
 
-//   let result = []
+  // let result = []
 
-//   try {
+  // try {
     
-//     const res: PayloadGetResponse<PlayerWithId> = await fetch ('http://localhost:3000' + '/api/players?limit=999').then(res => res.json())
-//     // const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
+    const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
+    // const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
     
-//     result =  res.docs.map((player) => ({
-//       id: String(player.id),
-//       // params: { handle: player.slug }
-//     }))
-//   } catch (error) {
+    const result =  res.docs.map((player) => ({
+      id: String(player.id),
+      // params: { handle: player.slug }
+    }))
+  // } catch (error) {
     
-//   }
-//   return result || []
+  // }
+  return result || []
 
-// }
+}
 
 
 const getPlayer = async ( handle: string, players: Player[]) => {
@@ -120,7 +120,7 @@ export default async function PlayerPage( { params }: { params: Promise<{ id: st
   // const player = await getPlayer(params.handle, players);
 
   const id = (await params).id
-  const player: Player = await fetch ('http://localhost:3000' + '/api/players/' + id).then(res => res.json())
+  const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
   // const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
 
 

@@ -5,7 +5,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier --write --ignore-path .gitignore .",
+    "prettier": "prettier --log-level=warn --write --ignore-path .gitignore .",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "cms:types:generate": "payload generate:types",
     "cms:migrate:create": "payload migrate:create",

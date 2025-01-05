@@ -1,5 +1,6 @@
-import { Player } from 'lib/data/players/players';
 import Link from 'next/link';
+import { Player } from 'payload-types';
+import { FC } from 'react';
 
 export function PlayerDescription({ player }: { player: Player }) {
   return (
@@ -34,17 +35,18 @@ export function PlayerDescription({ player }: { player: Player }) {
       </div>
 
             {/* Social links section */}
-
-            <div className="flex gap-2 mt-4">
-              Instagram:  { player.social_media.instagram ? <Link className='text-blue-600' target='_blank' href={'https://instagram.com/' + player.social_media.instagram} > {player.social_media.instagram}</Link> : 'N/A' }
-              </div>
+{  player.social_media?.instagram ?          <div className="flex gap-2 mt-4">
+              Instagram:  <Link className='text-blue-600' target='_blank' href={'https://instagram.com/' + player.social_media.instagram} > {player.social_media.instagram}</Link>  
+              </div> : <SocialNotFound socialName='Instagram' />}
+             { player.social_media?.twitter &&   <div className="flex gap-2">
+              Twitter: <Link className='text-blue-600' target='_blank' href={'https://x.com/' + player.social_media.twitter} > {player.social_media.twitter}</Link>
+              </div>}
+              {
+                player.social_media?.tiktok && 
               <div className="flex gap-2">
-              Twitter:  { player.social_media.twitter ? <Link className='text-blue-600' target='_blank' href={'https://x.com/' + player.social_media.twitter} > {player.social_media.twitter}</Link> : 'N/A' }
-              </div>
-              <div className="flex gap-2">
-              TikTok:   { player.social_media.tiktok ? <Link className='text-blue-600' target='_blank' href={'https://tiktok.com/' + player.social_media.tiktok} > {player.social_media.tiktok}</Link> : 'N/A' }
+              TikTok: <Link className='text-blue-600' target='_blank' href={'https://tiktok.com/' + player.social_media.tiktok} > {player.social_media.tiktok}</Link> 
               
-              </div>
+              </div>}
       {/* <VariantSelector options={player.options} variants={product.variants} /> */}
       {/* {product.descriptionHtml ? (
         <Prose
@@ -55,4 +57,14 @@ export function PlayerDescription({ player }: { player: Player }) {
       {/* <AddToCart product={product} /> */}
     </>
   );
+}
+
+
+const SocialNotFound: FC<{socialName: string}> = ({socialName}) => {
+
+  return (
+    <div className="flex gap-2">
+      {socialName}: N/A
+    </div>
+  )
 }

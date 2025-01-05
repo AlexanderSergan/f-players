@@ -5,7 +5,8 @@ import Footer from '@/components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { PlayerDescription } from 'components/product/player-description';
 import { ProductProvider } from 'components/product/product-context';
-import { LeicesterPlayers, Player } from 'lib/data/players/players';
+// import { LeicesterPlayers, Player } from 'lib/data/players/players';
+import { Media, Player } from 'payload-types';
 import { Suspense } from 'react';
 
 
@@ -40,11 +41,11 @@ export async function generateStaticParams() {
 
   // try {
     
-    const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
+    const res: PayloadGetResponse<Player> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
     // const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
     
     const result =  res.docs.map((player) => ({
-      id: String(player.id),
+      slug: String(player.slug),
       // params: { handle: player.slug }
     }))
   // } catch (error) {
@@ -55,93 +56,25 @@ export async function generateStaticParams() {
 }
 
 
-const getPlayer = async ( handle: string, players: Player[]) => {
-  // console.log('handle', handle, LeicesterPlayers)
+// const getPlayer = async ( handle: string, players: Player[]) => {
+//   // console.log('handle', handle, LeicesterPlayers)
 
-  return LeicesterPlayers.find((player) => player.slug === handle);
+//   return LeicesterPlayers.find((player) => player.slug === handle);
 
-}
-
-export async function generateMetadata(props: {
-  params: Promise<{ handle: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
+// }
 
 
-  const players = LeicesterPlayers
-
-  const player = await getPlayer(params.handle, players);
-  // const product = await getProduct(params.handle);
-
-
-  if (!player) return notFound();
-
-
-  return {
-    title: player.name ,
-    description: player.position ,
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true
-      }
-    },
-     
-    // description: player.position ,
-    // robots: {
-    //   index: indexable,
-    //   follow: indexable,
-    //   googleBot: {
-    //     index: indexable,
-    //     follow: indexable
-    //   }
-    // },
-  //   openGraph: url
-  //     ? {
-  //         images: [
-  //           {
-  //             url,
-  //             width,
-  //             height,
-  //             alt
-  //           }
-  //         ]
-  //       }
-  //     : null
-  };
-}
-
-export default async function PlayerPage( { params }: { params: Promise<{ id: string }> }) {
+export default async function PlayerPage( { params }: { params: Promise<{ slug: string }> }) {
   // const params = await props.params;
   // const product = await getProduct(params.handle);
   // const players = LeicesterPlayers
   // const player = await getPlayer(params.handle, players);
 
-  const id = (await params).id
-  const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
-  // const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + id).then(res => res.json())
+  const slug = (await params).slug
+  const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + slug).then(res => res.json())
+  console.log('GOT PLAYER ', player)
 
-
-
-
-  // const productJsonLd = {
-  //   '@context': 'https://schema.org',
-  //   '@type': 'Product',
-  //   name: player.name,
-  //   description: player.description,
-  //   image: player.featuredImage.url,
-  //   offers: {
-  //     '@type': 'AggregateOffer',
-  //     availability: player.availableForSale
-  //       ? 'https://schema.org/InStock'
-  //       : 'https://schema.org/OutOfStock',
-  //     priceCurrency: player.priceRange.minVariantPrice.currencyCode,
-  //     highPrice: player.priceRange.maxVariantPrice.amount,
-  //     lowPrice: player.priceRange.minVariantPrice.amount
-  //   }
-  // };
+  const img = player.img as Media
 
   if (!player) return notFound();
 
@@ -167,7 +100,7 @@ export default async function PlayerPage( { params }: { params: Promise<{ id: st
                   altText: image.altText
                 }))}
               /> */}
-              <Gallery images={[{src: player.img as string, altText: player.name as string}]} />
+              <Gallery images={[{src: img.url as string, altText: player.name as string}]} />
             </Suspense>
           </div>
 
@@ -222,3 +155,57 @@ export default async function PlayerPage( { params }: { params: Promise<{ id: st
 //     </div>
 //   );
 // }
+
+
+
+
+export async function generateMetadata(props: {
+  params: Promise<{ handle: string }>;
+}): Promise<Metadata> {
+  const params = await props.params;
+
+
+  const players = LeicesterPlayers
+
+  const player = await getPlayer(params.handle, players);
+  // const product = await getProduct(params.handle);
+
+
+  if (!player) return notFound();
+
+
+  return {
+    title: player.name ,
+    description: player.position ,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true
+      }
+    },
+     
+    // description: player.position ,
+    // robots: {
+    //   index: indexable,
+    //   follow: indexable,
+    //   googleBot: {
+    //     index: indexable,
+    //     follow: indexable
+    //   }
+    // },
+  //   openGraph: url
+  //     ? {
+  //         images: [
+  //           {
+  //             url,
+  //             width,
+  //             height,
+  //             alt
+  //           }
+  //         ]
+  //       }
+  //     : null
+  };
+}

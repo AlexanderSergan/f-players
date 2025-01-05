@@ -1,27 +1,26 @@
 // storage-adapter-import-placeholder
-import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
-import { resendAdapter } from '@payloadcms/email-resend'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
-import path from 'path'
-import { buildConfig } from 'payload'
-import sharp from 'sharp'
-import { fileURLToPath } from 'url'
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres';
+import { resendAdapter } from '@payloadcms/email-resend';
+import { payloadCloudPlugin } from '@payloadcms/payload-cloud';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing';
+import path from 'path';
+import { buildConfig } from 'payload';
+import sharp from 'sharp';
+import { fileURLToPath } from 'url';
 
-import { Club } from './collections/Club'
-import { Media } from './collections/Media'
-import { Players } from './collections/Player'
-import { Users } from './collections/Users'
+import { Club } from './collections/Club';
+import { Media } from './collections/Media';
+import { Players } from './collections/Player';
+import { Users } from './collections/Users';
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
-
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 // console.log('🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️🏄🏼‍♂️
-// 
-// 
-// 
+//
+//
+//
 // \DATABASE_URI', process.env.DATABASE_URI)
 
 export default buildConfig({
@@ -43,7 +42,7 @@ export default buildConfig({
     },
   }),
   sharp,
-    email: resendAdapter({
+  email: resendAdapter({
     defaultFromAddress: 'info@200kph.dev',
     defaultFromName: 'Football Players',
     apiKey: process.env.RESEND_API_KEY || '',
@@ -61,8 +60,7 @@ export default buildConfig({
     }),
     // storage-adapter-placeholder
   ],
-})
-
+});
 
 // const err =  {"cause":"Error: getaddrinfo ENOTFOUND f-players","status":500,"message":"fetch failed","query":"
 //     query getPage($handle: String!) {
@@ -70,7 +68,7 @@ export default buildConfig({
 //         ...page
 //       }
 //     }
-    
+
 //     fragment page on Page {
 //       ... on Page {
 //         id
@@ -85,11 +83,10 @@ export default buildConfig({
 //         updatedAt
 //       }
 //     }
-    
+
 //     fragment seo on SEO {
 //       description
 //       title
 //     }
-  
-  
+
 //   "}

@@ -9,16 +9,12 @@ import { ProductProvider } from 'components/product/product-context';
 import { Media, Player } from 'payload-types';
 import { Suspense } from 'react';
 
-
-
-
-export const revalidate = 86400 // 60 * 60 * 24 = 1 day
+export const revalidate = 86400; // 60 * 60 * 24 = 1 day
 
 // We'll prerender only the params from `generateStaticParams` at build time.
 // If a request comes in for a path that hasn't been generated,
 // Next.js will server-render the page on-demand.
-export const dynamicParams = true // or false, to 404 on unknown paths
- 
+export const dynamicParams = true; // or false, to 404 on unknown paths
 
 type PayloadGetResponse<T> = {
   docs: T[];
@@ -31,30 +27,29 @@ type PayloadGetResponse<T> = {
   prevPage: number | null;
   totalDocs: number;
   totalPages: number;
-}
+};
 
-type PlayerWithId = Player & { id: string }
+type PlayerWithId = Player & { id: string };
 
 export async function generateStaticParams() {
-
   // let result = []
 
   // try {
-    
-    const res: PayloadGetResponse<Player> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
-    // const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
-    
-    const result =  res.docs.map((player) => ({
-      slug: String(player.slug),
-      // params: { handle: player.slug }
-    }))
+
+  const res: PayloadGetResponse<Player> = await fetch(
+    'https://f-players.200kph.dev' + '/api/players?limit=999'
+  ).then((res) => res.json());
+  // const res: PayloadGetResponse<PlayerWithId> = await fetch ('https://f-players.200kph.dev' + '/api/players?limit=999').then(res => res.json())
+
+  const result = res.docs.map((player) => ({
+    slug: String(player.slug),
+    // params: { handle: player.slug }
+  }));
   // } catch (error) {
-    
+
   // }
-  return result || []
-
+  return result || [];
 }
-
 
 // const getPlayer = async ( handle: string, players: Player[]) => {
 //   // console.log('handle', handle, LeicesterPlayers)
@@ -63,18 +58,23 @@ export async function generateStaticParams() {
 
 // }
 
-
-export default async function PlayerPage( { params }: { params: Promise<{ slug: string }> }) {
+export default async function PlayerPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   // const params = await props.params;
   // const product = await getProduct(params.handle);
   // const players = LeicesterPlayers
   // const player = await getPlayer(params.handle, players);
 
-  const slug = (await params).slug
-  const player: Player = await fetch ('https://f-players.200kph.dev' + '/api/players/' + slug).then(res => res.json())
-  console.log('GOT PLAYER ', player)
+  const slug = (await params).slug;
+  const player: Player = await fetch(
+    'https://f-players.200kph.dev' + '/api/players/' + slug
+  ).then((res) => res.json());
+  console.log('GOT PLAYER ', player);
 
-  const img = player.img as Media
+  const img = player.img as Media;
 
   if (!player) return notFound();
 
@@ -86,12 +86,12 @@ export default async function PlayerPage( { params }: { params: Promise<{ slug: 
           __html: JSON.stringify(productJsonLd)
         }}
       /> */}
-      <div className="mx-auto max-w-screen-2xl px-4">
-        <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 lg:flex-row lg:gap-8 dark:border-neutral-800 dark:bg-black">
-          <div className="h-full w-full basis-full lg:basis-4/6">
+      <div className='mx-auto max-w-screen-2xl px-4'>
+        <div className='flex flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 lg:flex-row lg:gap-8 dark:border-neutral-800 dark:bg-black'>
+          <div className='h-full w-full basis-full lg:basis-4/6'>
             <Suspense
               fallback={
-                <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
+                <div className='relative aspect-square h-full max-h-[550px] w-full overflow-hidden' />
               }
             >
               {/* <Gallery
@@ -100,13 +100,17 @@ export default async function PlayerPage( { params }: { params: Promise<{ slug: 
                   altText: image.altText
                 }))}
               /> */}
-              <Gallery images={[{src: img.url as string, altText: player.name as string}]} />
+              <Gallery
+                images={[
+                  { src: img.url as string, altText: player.name as string },
+                ]}
+              />
             </Suspense>
           </div>
 
-          <div className="basis-full lg:basis-2/6">
+          <div className='basis-full lg:basis-2/6'>
             <Suspense fallback={null}>
-                {/* TODO: uncomment product description and make it PlayerInfo */}
+              {/* TODO: uncomment product description and make it PlayerInfo */}
               <PlayerDescription player={player} />
             </Suspense>
           </div>
@@ -156,36 +160,30 @@ export default async function PlayerPage( { params }: { params: Promise<{ slug: 
 //   );
 // }
 
-
-
-
 export async function generateMetadata(props: {
   params: Promise<{ handle: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
 
-
-  const players = LeicesterPlayers
+  const players = LeicesterPlayers;
 
   const player = await getPlayer(params.handle, players);
   // const product = await getProduct(params.handle);
 
-
   if (!player) return notFound();
 
-
   return {
-    title: player.name ,
-    description: player.position ,
+    title: player.name,
+    description: player.position,
     robots: {
       index: true,
       follow: true,
       googleBot: {
         index: true,
-        follow: true
-      }
+        follow: true,
+      },
     },
-     
+
     // description: player.position ,
     // robots: {
     //   index: indexable,
@@ -195,17 +193,17 @@ export async function generateMetadata(props: {
     //     follow: indexable
     //   }
     // },
-  //   openGraph: url
-  //     ? {
-  //         images: [
-  //           {
-  //             url,
-  //             width,
-  //             height,
-  //             alt
-  //           }
-  //         ]
-  //       }
-  //     : null
+    //   openGraph: url
+    //     ? {
+    //         images: [
+    //           {
+    //             url,
+    //             width,
+    //             height,
+    //             alt
+    //           }
+    //         ]
+    //       }
+    //     : null
   };
 }

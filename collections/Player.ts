@@ -4,7 +4,6 @@ export const Players: CollectionConfig = {
   slug: 'players',
   access: {
     read: () => true,
-
   },
   admin: {
     useAsTitle: 'name',
@@ -16,8 +15,8 @@ export const Players: CollectionConfig = {
   },
   fields: [
     {
-        name: 'name',
-        type: 'text',
+      name: 'name',
+      type: 'text',
       required: true,
     },
     {

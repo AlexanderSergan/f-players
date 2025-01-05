@@ -3,15 +3,9 @@
     "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
-      "@payload-config": [
-        "./payload.config.ts"
-      ],
-      "components/*": [
-        "./components/*"
-      ],
-      "@/*": [
-        "./*"
-      ],
+      "@payload-config": ["./payload.config.ts"],
+      "components/*": ["./components/*"],
+      "@/*": ["./*"]
     },
     "downlevelIteration": true,
     "allowJs": true,
@@ -34,6 +28,12 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "next.config.mjs"
+  ],
   "exclude": ["node_modules"]
 }

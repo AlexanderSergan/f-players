@@ -26,7 +26,7 @@ export function WelcomeToast() {
             </a> */}
             {/* . */}
           </>
-        )
+        ),
       });
     }
   }, []);

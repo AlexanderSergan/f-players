@@ -4,8 +4,8 @@ import { ThreePlayerGrid } from 'components/grid/three-players';
 export const metadata = {
   description: 'Find socials of your favourite players.',
   openGraph: {
-    type: 'website'
-  }
+    type: 'website',
+  },
 };
 
 export default function HomePage() {

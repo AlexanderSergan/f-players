@@ -1,12 +1,21 @@
 'use server';
 
 import { TAGS } from 'lib/constants';
-import { addToCart, createCart, getCart, removeFromCart, updateCart } from 'lib/shopify';
+import {
+  addToCart,
+  createCart,
+  getCart,
+  removeFromCart,
+  updateCart,
+} from 'lib/shopify';
 import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export async function addItem(prevState: any, selectedVariantId: string | undefined) {
+export async function addItem(
+  prevState: any,
+  selectedVariantId: string | undefined
+) {
   let cartId = (await cookies()).get('cartId')?.value;
 
   if (!cartId || !selectedVariantId) {
@@ -14,7 +23,9 @@ export async function addItem(prevState: any, selectedVariantId: string | undefi
   }
 
   try {
-    await addToCart(cartId, [{ merchandiseId: selectedVariantId, quantity: 1 }]);
+    await addToCart(cartId, [
+      { merchandiseId: selectedVariantId, quantity: 1 },
+    ]);
     revalidateTag(TAGS.cart);
   } catch (e) {
     return 'Error adding item to cart';
@@ -35,7 +46,9 @@ export async function removeItem(prevState: any, merchandiseId: string) {
       return 'Error fetching cart';
     }
 
-    const lineItem = cart.lines.find((line) => line.merchandise.id === merchandiseId);
+    const lineItem = cart.lines.find(
+      (line) => line.merchandise.id === merchandiseId
+    );
 
     if (lineItem && lineItem.id) {
       await removeFromCart(cartId, [lineItem.id]);
@@ -70,7 +83,9 @@ export async function updateItemQuantity(
       return 'Error fetching cart';
     }
 
-    const lineItem = cart.lines.find((line) => line.merchandise.id === merchandiseId);
+    const lineItem = cart.lines.find(
+      (line) => line.merchandise.id === merchandiseId
+    );
 
     if (lineItem && lineItem.id) {
       if (quantity === 0) {
@@ -80,8 +95,8 @@ export async function updateItemQuantity(
           {
             id: lineItem.id,
             merchandiseId,
-            quantity
-          }
+            quantity,
+          },
         ]);
       }
     } else if (quantity > 0) {

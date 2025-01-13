@@ -19,21 +19,19 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    club: {
+      players: 'players';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     players: PlayersSelect<false> | PlayersSelect<true>;
     club: ClubSelect<false> | ClubSelect<true>;
-    'payload-locked-documents':
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences':
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    'payload-migrations':
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: number;
@@ -114,6 +112,7 @@ export interface Player {
   position: 'goalkeeper' | 'defender' | 'midfielder' | 'forward';
   img: number | Media;
   slug: string;
+  club?: (number | null) | Club;
   country: string;
   social_media?: {
     instagram?: string | null;
@@ -139,7 +138,10 @@ export interface Club {
   crest?: (number | null) | Media;
   slug: string;
   country: string;
-  players?: (number | Player)[] | null;
+  players?: {
+    docs?: (number | Player)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
   social_media?: {
     instagram?: string | null;
     twitter?: string | null;
@@ -256,6 +258,7 @@ export interface PlayersSelect<T extends boolean = true> {
   position?: T;
   img?: T;
   slug?: T;
+  club?: T;
   country?: T;
   social_media?:
     | T
@@ -332,6 +335,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

@@ -18,8 +18,8 @@ export function PlayerDescription({ player }: { player: Player }) {
 
         <div className='mt-4 flex flex-col gap-2'>
           <div className='flex gap-2'>
-            <div className='font-bold'>Club:</div>
-            <div>{player.club}</div>
+            {/* <div className='font-bold'>Club:</div>
+            <div>{player.club}</div> */}
           </div>
           <div className='flex gap-2'>
             <div className='font-bold'>Country:</div>

@@ -1,4 +1,18 @@
-import { CollectionConfig } from 'payload';
+import { CollectionConfig, Field } from 'payload';
+
+export const MyJoinField: Field = {
+  name: 'relatedPlayers',
+  type: 'join',
+  collection: 'players',
+  on: 'club',
+}
+
+// relationship field in another collection [Player.ts]:
+export const MyRelationshipField: Field = {
+  name: 'club',
+  type: 'relationship',
+  relationTo: 'club',
+}
 
 export const Club: CollectionConfig = {
   slug: 'club',
@@ -37,12 +51,19 @@ export const Club: CollectionConfig = {
       required: true,
     },
 
+    // {
+    //   name: 'players',
+    //   type: 'relationship',
+    //   relationTo: 'players',
+    //   hasMany: true,
+    // },
     {
       name: 'players',
-      type: 'relationship',
-      relationTo: 'players',
-      hasMany: true,
+      type: 'join',
+      collection: 'players',
+      on: 'club',
     },
+  
 
     {
       name: 'social_media',

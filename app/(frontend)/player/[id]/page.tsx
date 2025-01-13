@@ -32,9 +32,6 @@ type PayloadGetResponse<T> = {
 type PlayerWithId = Player & { id: string };
 
 export async function generateStaticParams() {
-  // let result = []
-
-  // try {
 
   const res: PayloadGetResponse<Player> = await fetch(
     'https://f-players.200kph.dev' + '/api/players?limit=999'
@@ -43,12 +40,15 @@ export async function generateStaticParams() {
 
   const result = res.docs.map((player) => ({
     slug: String(player.slug),
-    // params: { handle: player.slug }
   }));
-  // } catch (error) {
-
-  // }
   return result || [];
+}
+
+const getPlayerBySlug = async (slug: string) => {
+  const player: Player = await fetch(
+    'https://f-players.200kph.dev' + '/api/players/' + slug
+  ).then((res) => res.json());
+  return player;
 }
 
 // const getPlayer = async ( handle: string, players: Player[]) => {
@@ -165,9 +165,9 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
 
-  const players = LeicesterPlayers;
+  // const players = LeicesterPlayers;
 
-  const player = await getPlayer(params.handle, players);
+  const player = await getPlayerBySlug(params.handle);
   // const product = await getProduct(params.handle);
 
   if (!player) return notFound();

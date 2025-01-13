@@ -1,9 +1,17 @@
 import { CollectionConfig } from 'payload';
 
+// export const ClubJoinField: Field = {
+//   name: 'relatedClub',
+//   type: 'join',
+//   collection: ''
+//   on: 'club',
+// }
+
 export const Players: CollectionConfig = {
   slug: 'players',
   access: {
     read: () => true,
+
   },
   admin: {
     useAsTitle: 'name',
@@ -15,8 +23,8 @@ export const Players: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
+        name: 'name',
+        type: 'text',
       required: true,
     },
     {
@@ -42,12 +50,12 @@ export const Players: CollectionConfig = {
       required: true,
       unique: true,
     },
-    // {
-    //   name: 'club',
-    //   type: 'relationship',
-    //   relationTo: 'club',
-    //   required: true,
-    // },
+    
+    {
+      name: 'club',
+      type: 'relationship',
+      relationTo: 'club',
+    },
     {
       name: 'country',
       type: 'text',
